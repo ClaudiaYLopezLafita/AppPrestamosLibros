@@ -9,7 +9,6 @@ mongoose.set('strictQuery', false);
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-const librosRouter = require('./routes/libros');
 
 var app = express();
 
@@ -25,7 +24,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use('/libros', librosRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
@@ -44,7 +42,7 @@ app.use(function (err, req, res, next) {
 });
 
 // Conexión a la base de datos
-mongoose.connect(process.env.DB_URI)
+mongoose.connect("mongodb+srv://admin:admin@proyectoservidor.vu3hyaf.mongodb.net/app-prestamos-libros?retryWrites=true&w=majority")
   .then(() => console.log('Conexión satisfactoria a la base de datos'))
   .catch(err => console.error(err))
 

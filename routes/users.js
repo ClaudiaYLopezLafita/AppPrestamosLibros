@@ -1,20 +1,20 @@
 var express = require('express');
 var router = express.Router();
-const { getAllUsers, getUser, createUser, updateUser, deleteUser } = require('../controllers/users');
 
-// Devolver todos los usuarios
-router.get('/', getAllUsers);
+router.get('/', (req, res) => {
+    res.send('resource');
+});
+router.get('/:id', (req, res) => {
 
-// Devolver Usuario
-router.get('/:id', getUser);
+});
+router.post('/', (req, res) => {
 
-// Crear Usuario
-router.post('/', createUser);
+});
+router.put('/:id', (req, res) => {
 
-// Actualizar Usuario
-router.put('/:id', updateUser);
+});
+router.delete('/:id', (req, res) => {
 
-// Borrar Usuario
-router.delete('/:id', deleteUser);
+});
 
 module.exports = router;
