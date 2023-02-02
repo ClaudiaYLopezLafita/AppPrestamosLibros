@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-
+///hoaisd
 //Para la encriptación del password
 var bcrypt = require('bcryptjs');
 var SALT_WORK_FACTOR = 10;
