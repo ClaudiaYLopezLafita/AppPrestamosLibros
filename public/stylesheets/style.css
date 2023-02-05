@@ -1,9 +1,56 @@
-/*body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+@import url(https://fonts.googleapis.com/css?family=Montserrat:400,700);
+
+html {
+  font-family: 'Montserrat', Arial, sans-serif;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
 }
 
-a {
-  color: #00B7FF;
-}*/
+nav{
+  border-bottom: solid 2px #5A5A5A;
+}
 
+nav .btn-login{
+  background-color: #5A5A5A;
+}
+
+body .main{
+  background-color: #e0dede;
+}
+
+.carousel{
+  max-width: 80%;
+  margin: auto;
+}
+
+/* This is important to make z-indexes work as expexted */
+.carousel-item {
+  -webkit-perspective: initial;
+  perspective: initial;
+}
+
+/* This is to make the image offset */
+.carousel-item img {
+  padding: 1rem;
+}
+
+.carousel-panel,
+.carousel-overlay {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 50%;
+}
+
+/* .carousel-panel {
+  background-color: rgba(30,80,110,.334);
+} */
+.carousel-overlay {
+  background-color: rgba(0, 0, 0, 0.75);
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+  align-items: bottom;
+}
