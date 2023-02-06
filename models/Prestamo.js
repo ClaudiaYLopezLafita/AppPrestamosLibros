@@ -1,4 +1,6 @@
 const mongoose = require('mongoose');
+var Usuario = require('./Usuario');
+var Libro = require('./Libro');
 
 const PrestamoSchema = new mongoose.Schema({
     fechaRetirada:{
