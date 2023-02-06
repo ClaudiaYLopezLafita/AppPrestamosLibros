@@ -17,12 +17,12 @@ const PrestamoSchema = new mongoose.Schema({
         type: String,
     },
     libroID:[{
-            type: Schema.ObjectId,
+            type:  mongoose.Schema.Schema.ObjectId,
             ref: 'Libro',
             default: null
     }],
     usuarioID:[{
-        type: Schema.ObjectId,
+        type:  mongoose.Schema.Schema.ObjectId,
         ref: 'Usuario',
         default: null
     }]
