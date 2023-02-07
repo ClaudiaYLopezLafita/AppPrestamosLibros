@@ -6,12 +6,12 @@ html {
   -webkit-text-size-adjust: 100%;
 }
 
-nav{
-  border-bottom: solid 2px #5A5A5A;
+body{
+  background-color: black;
 }
 
-nav .btn-login{
-  background-color: #5A5A5A;
+nav, .main{
+  border-bottom: solid 2px #5A5A5A;
 }
 
 body .main{
