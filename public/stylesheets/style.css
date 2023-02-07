@@ -43,9 +43,6 @@ body .main{
   left: 50%;
 }
 
-/* .carousel-panel {
-  background-color: rgba(30,80,110,.334);
-} */
 .carousel-overlay {
   background-color: rgba(0, 0, 0, 0.75);
 }
@@ -55,9 +52,14 @@ body .main{
   align-items: bottom;
 }
 
-/* .card{
-  width: ;
-} */
+#noticias .card{
+  width: 24rem;
+}
+
+#proximos .card{
+  max-width: 540px;
+  padding-left: 0px;
+}
 
 .card img{
   height: 200px;
