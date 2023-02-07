@@ -54,3 +54,15 @@ body .main{
 .carousel-control-next {
   align-items: bottom;
 }
+
+/* .card{
+  width: ;
+} */
+
+.card img{
+  height: 200px;
+}
+
+footer a{
+  text-decoration:none;
+}

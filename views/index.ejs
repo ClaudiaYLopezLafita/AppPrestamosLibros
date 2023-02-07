@@ -11,7 +11,7 @@
   </head>
   <body>
     <div class="container-fluid px-0">
-        <!-- NAVBAR-->
+        <!--NAVBAR-->
         <nav class="navbar navbar-expand-sm navbar-dark bg-dark mx-0">
           <div class="container-fluid">
             <div class="col-md-3">
@@ -42,6 +42,8 @@
             </div>
           </div>
         </nav>
+        <!--END NAVBAR-->
+
         <!--MAIN -->
         <div class="main container-fluid">
           <!-- Carousel -->
@@ -112,32 +114,93 @@
             <div class="container-fluid">
               <div class="row">
                 <div class="text-center">
-                  <h2 class="tittles-pages">Servicios y Novedades</h2>
+                  <h2 class="tittles-pages text-uppercase">Servicios</h2>
                 </div>
                 <div class="col-xs-12 px-5">
                   <div class="container">
                     <!-- Nav tabs -->
                     <ul class="nav nav-tabs" role="tablist">
                       <li class="nav-item">
-                        <a class="nav-link active text-dark" data-bs-toggle="tab" href="#home">Proximos</a>
+                        <a class="nav-link active text-dark" data-bs-toggle="tab" href="#proximos">Proximos</a>
                       </li>
                       <li class="nav-item">
-                        <a class="nav-link text-dark" data-bs-toggle="tab" href="#menu1">Menu 1</a>
+                        <a class="nav-link text-dark" data-bs-toggle="tab" href="#noticias">Noticias</a>
                       </li>
                       <li class="nav-item">
                         <a class="nav-link text-dark" data-bs-toggle="tab" href="#menu2">Menu 2</a>
                       </li>
                     </ul>
-
                     <!-- Tab panes -->
-                    <div class="tab-content">
-                      <div id="home" class="container tab-pane active"><br>
-                        <h3>HOME</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                    <div class="tab-content bg-light">
+                      <div id="proximos" class="container tab-pane active"><br>
+                        <div class="card mb-3" style="max-width: 540px;">
+                          <div class="row g-0">
+                            <div class="col-md-4">
+                              <img src="..." class="img-fluid rounded-start" alt="...">
+                            </div>
+                            <div class="col-md-8">
+                              <div class="card-body">
+                                <h5 class="card-title">Card title</h5>
+                                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="card mb-3" style="max-width: 540px;">
+                          <div class="row g-0">
+                            <div class="col-md-4">
+                              <img src="..." class="img-fluid rounded-start" alt="...">
+                            </div>
+                            <div class="col-md-8">
+                              <div class="card-body">
+                                <h5 class="card-title">Card title</h5>
+                                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
                       </div>
-                      <div id="menu1" class="container tab-pane fade"><br>
-                        <h3>Menu 1</h3>
-                        <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                      <div id="noticias" class="container tab-pane fade"><br>
+                        <div class="row row-cols-1 row-cols-md-2 g-4 pb-2">
+                          <div class="col">
+                            <div class="card">
+                              <img src="/images/noticias1.jpg" class="card-img-top" alt="firma_libro">
+                              <div class="card-body">
+                                <h5 class="card-title">Firma de libro: </h5>
+                                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col">
+                            <div class="card">
+                              <img src="/images/noticias2.jpeg" class="card-img-top" alt="...">
+                              <div class="card-body">
+                                <h5 class="card-title">Modificación horario Servicio técnicos</h5>
+                                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col">
+                            <div class="card">
+                              <img src="/images/noticias3.jpeg" class="card-img-top" alt="Recaudacin_libros">
+                              <div class="card-body">
+                                <h5 class="card-title">Recogida de libros</h5>
+                                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col">
+                            <div class="card">
+                              <img src="/images/noticias4.jpeg" class="card-img-top" alt="...">
+                              <div class="card-body">
+                                <h5 class="card-title">Card title</h5>
+                                <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
                       </div>
                       <div id="menu2" class="container tab-pane fade"><br>
                         <h3>Menu 2</h3>
@@ -150,7 +213,9 @@
             </div>
           </section>
         </div>
-        <!--FOOTER-->
+        <!--END MAIN-->
+        
+        <!--START FOOTER-->
         <footer class="bg-dark text-center text-white">
           <!-- Grid container -->
           <div class="container p-4">
@@ -213,7 +278,7 @@
             <!-- Section: Form -->
             <hr class="text-white px-0">
             <!-- Section: Links -->
-            <section class="">
+            <section class="pb-0">
               <!--Grid row-->
               <div class="row">
                 <!--Grid column-->
@@ -221,77 +286,73 @@
                   <h5 class="text-uppercase">Categorias</h5>
                   <ul class="list-unstyled mb-0">
                     <li>
-                      <a href="#!" class="text-white">Fantasia</a>
+                      <a href="#!" class="text-white fw-light">Fantasia</a>
                     </li>
                     <li>
-                      <a href="#!" class="text-white">Novela Histórica</a>
+                      <a href="#!" class="text-white fw-light">Novela Histórica</a>
                     </li>
                     <li>
-                      <a href="#!" class="text-white">Drama</a>
+                      <a href="#!" class="text-white fw-light">Drama</a>
                     </li>
                     <li>
-                      <a href="#!" class="text-white">...</a>
-                    </li>
-                  </ul>
-                </div>
-                <!--Grid column-->
-
-                <!--Grid column-->
-                <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-                  <h5 class="text-uppercase">Links</h5>
-
-                  <ul class="list-unstyled mb-0">
-                    <li>
-                      <a href="#!" class="text-white">Link 1</a>
-                    </li>
-                    <li>
-                      <a href="#!" class="text-white">Link 2</a>
-                    </li>
-                    <li>
-                      <a href="#!" class="text-white">Link 3</a>
-                    </li>
-                    <li>
-                      <a href="#!" class="text-white">Link 4</a>
+                      <a href="#!" class="text-white fw-light">...</a>
                     </li>
                   </ul>
                 </div>
                 <!--Grid column-->
                 <!--Grid column-->
                 <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-                  <h5 class="text-uppercase">Links</h5>
+                  <h5 class="text-uppercase">Secciones</h5>
                   <ul class="list-unstyled mb-0">
                     <li>
-                      <a href="#!" class="text-white">Link 1</a>
+                      <a href="#!" class="text-white fw-light">Inicio</a>
                     </li>
                     <li>
-                      <a href="#!" class="text-white">Link 2</a>
+                      <a href="#!" class="text-white fw-light">Categorias</a>
                     </li>
                     <li>
-                      <a href="#!" class="text-white">Link 3</a>
+                      <a href="#!" class="text-white fw-light">Registro</a>
                     </li>
                     <li>
-                      <a href="#!" class="text-white">Link 4</a>
+                      <a href="#!" class="text-white fw-light">Sobre Nosotros</a>
                     </li>
                   </ul>
                 </div>
                 <!--Grid column-->
-
+                <!--Grid column-->
+                <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                  <h5 class="text-uppercase">Utils</h5>
+                  <ul class="list-unstyled mb-0">
+                    <li>
+                      <a href="#!" class="text-white fw-light">Preguntas frecuentes</a>
+                    </li>
+                    <li>
+                      <a href="#!" class="text-white fw-light">Terminos de política</a>
+                    </li>
+                    <li>
+                      <a href="#!" class="text-white fw-light">Gestión de datos</a>
+                    </li>
+                    <li>
+                      <a href="#!" class="text-white fw-light">Servicio técnico</a>
+                    </li>
+                  </ul>
+                </div>
+                <!--Grid column-->
                 <!--Grid column-->
                 <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
                   <h5 class="text-uppercase">Contáctanos</h5>
-
                   <ul class="list-unstyled mb-0">
-                    <li>
-                      <a href="#!" class="text-white">+34 999-999-999</a>
+                    <li class="pb-1">
+                      <i class="bi bi-house-door-fill pr-1"></i>
+                      <a href="#!" class="text-white fw-light">C/ localizacion, 4, 5D</a>
+                    </li>
+                    <li class="pb-1">
+                      <i class="bi bi-envelope-at-fill pr-1"></i>
+                      <a href="#!" class="text-white fw-light">example@email.com</a>
                     </li>
                     <li>
-                      <a href="#!" class="text-white">Link 2</a>
-                    </li>
-                    <li>
-                      <a href="#!" class="text-white">Link 3</a>
-                    </li>
-                    <li>
-                      <a href="#!" class="text-white">Link 4</a>
+                      <i class="bi bi-telephone-fill pr-1"></i>
+                      <a href="#!" class="text-white fw-light">+34 999-999-999</a>
                     </li>
                   </ul>
                 </div>
@@ -304,13 +365,13 @@
           <!-- Grid container -->
           <hr class="text-white px-0">
           <!-- Copyright -->
-          <div class="text-center p-3">
+          <div class="text-center p-3 pt-0">
             © 2020 Copyright:
-            <a class="text-white" href="https://mdbootstrap.com/">MDBootstrap.com</a>
+            <a class="text-white" href="http://www.iesalixar.org/">I.E.S Alixar</a>
           </div>
           <!-- Copyright -->
         </footer>
-<!-- Footer -->
+        <!--END FOOTER-->
     </div>
   </body>
 </html>
