@@ -1,6 +1,13 @@
 const mongoose = require('mongoose');
+var Usuario = require('./Usuario');
+var Libro = require('./Libro');
 
-const reservas = new mongoose.Schema({
+const ReservasSchema = new mongoose.Schema({
+    idReserva: {
+        type: String,
+        required: true,
+        unique: true
+    },
     realización: {
         type: Date,
         required: true
@@ -14,12 +21,14 @@ const reservas = new mongoose.Schema({
     },
     idLibro: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'libro'
+        ref: 'Libro',
+        default: null
     },
-    id: {
+    idUsuario: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'libro'
+        ref: 'Usuario',
+        default: null
     }
 })
 
-module.exports = mongoose.model('Reservas', reservas);
+module.exports = mongoose.model('Reservas', ReservasSchema);
