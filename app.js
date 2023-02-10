@@ -7,9 +7,13 @@ require('dotenv').config();
 const mongoose = require('mongoose');
 mongoose.set('strictQuery', false);
 
+//solicitamos accesos a routes
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-const librosRouter = require('./routes/libros');
+var librosRouter = require('./routes/libros');
+var prestamosRouter = require('./routes/prestamos');
+// var reservasRouter = require('./routes/users');
+var sancionesRouter = require('./routes/sanciones');
 
 var app = express();
 
@@ -21,11 +25,17 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, '/public')));
 
+// app.use(express.static(__dirname + 'public'));
+
+//indicamos el uso de las rutas
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/libros', librosRouter);
+app.use('/prestamos', prestamosRouter);
+// app.use('/reservas', reservasRouter);
+app.use('/sanciones', sancionesRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

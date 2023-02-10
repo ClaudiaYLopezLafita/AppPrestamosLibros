@@ -1,8 +1,70 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+@import url(https://fonts.googleapis.com/css?family=Montserrat:400,700);
+
+html {
+  font-family: 'Montserrat', Arial, sans-serif;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
 }
 
-a {
-  color: #00B7FF;
+body{
+  background-color: black;
+}
+
+nav, .main{
+  border-bottom: solid 2px #5A5A5A;
+}
+
+body .main{
+  background-color: #e0dede;
+}
+
+.carousel{
+  max-width: 80%;
+  margin: auto;
+}
+
+/* This is important to make z-indexes work as expexted */
+.carousel-item {
+  -webkit-perspective: initial;
+  perspective: initial;
+}
+
+/* This is to make the image offset */
+.carousel-item img {
+  padding: 1rem;
+}
+
+.carousel-panel,
+.carousel-overlay {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 50%;
+}
+
+.carousel-overlay {
+  background-color: rgba(0, 0, 0, 0.75);
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+  align-items: bottom;
+}
+
+#noticias .card{
+  width: 24rem;
+}
+
+#proximos .card{
+  max-width: 540px;
+  padding-left: 0px;
+}
+
+.card img{
+  height: 200px;
+}
+
+footer a{
+  text-decoration:none;
 }

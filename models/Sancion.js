@@ -1,5 +1,8 @@
 const mongose = require('mongose')
 
+var Usuario = require('./Usuario');
+
+
 const SancionSchema = mongose.Schema({
     numReferencia:{
         type: String,
@@ -23,7 +26,12 @@ const SancionSchema = mongose.Schema({
     prorrogable:{
         type:Boolean,
         required:false
-    }
+    },
+    usuarioID:[{
+        type: Schema.ObjectId,
+        ref: 'Usuario',
+        default: null
+    }]
 
 })
 
