@@ -1,20 +1,88 @@
 var express = require('express');
+var mongoose = require('mongoose');
 var router = express.Router();
 
-router.get('/', (req, res) => {
-    res.send('resource');
-});
-router.get('/:id', (req, res) => {
+//modelos
+var Libro = require('../models/Libro.js');
+var Prestamo = require('../models/Prestamo.js');
+var User = require('../models/Usuario.js');
 
+// GET del listado de prestamos ordenados por fecha de publicación
+// mostramos el nombre del usuario y libro
+router.get('/', (req, res, next) => {
+    Prestamo.find()
+    .sort('-fechaRetirada')
+    .populate('usuarioID',{_id:0,fullname:1}).populate('libroID',{_id:0,titulo:1})
+    .exec(function(err, posts) {
+        if (err) res.status(500).send(err);
+        else res.status(200).json(posts);//tendo todos los post con el user completo
+    });
 });
-router.post('/', (req, res) => {
 
+// GET de todos los prestamos de un usuario dado (identificado por su Id)
+router.get('/all/:id', function(req, res, next) {
+    Prestamo.find({ 'usuarioID': req.params.id}).sort('-fechaRetirada')
+    .populate('usuarioID',{_id:0,fullname:1}).populate('libroID',{_id:0,titulo:1})
+    .exec(function(err, posts){
+        if (err) res.status(500).send(err);
+        else res.status(200).json(posts);
+    });
 });
-router.put('/:id', (req, res) => {
 
+// GET de todos los prestamos de un libro dado (identificado por su Id)
+router.get('/all/:id', function(req, res, next) {
+    Post.find({ 'libroID': req.params.id}).sort('-fechaRetirada')
+    .populate('libroID',{_id:0,titulo:1})
+    .populate('usuarioID',{_id:0,fullname:1})
+    .exec(function(err, posts){
+        if (err) res.status(500).send(err);
+        else res.status(200).json(posts);
+    });
 });
-router.delete('/:id', (req, res) => {
 
+// POST de un nuevo post o entrada
+router.post('/', function(req, res, next) {
+    //comprobamos que el usuario existe
+    User.findById(req.body.iduser, function(err, userinfo) {
+        if (err) res.status(500).send(err);
+        else {
+            // crear la instancia Post
+            var prestamoInstance = new Post({
+                usuarioID: req.body.usuarioID,
+                libroID: req.body.libroID,
+                fechaRetirada: req.body.fechaRetirada,
+                fechaDevolucion: req.body.fechaDevolucion,
+            });
+            // añadir postInstance al array de posts del usuario
+            // userinfo.posts.push(prestamoInstance);
+            // salvar el post en las colecciones users y posts
+            userinfo.save(function(err) {
+                if (err) res.status(500).send(err);
+                else {
+                    prestamoInstance.save(function(err) {
+                        if (err) res.status(500).send(err);
+                            res.sendStatus(200);
+                });
+                }
+            });
+        }
+    });
+});
+
+// PUT de un prestamo existente (identificado por su Id)
+router.put('/:id', function(req, res, next) {
+    Prestamo.findByIdAndUpdate(req.params.id,req.body, function(err,  prestamoinfo) {
+        if (err) res.status(500).send(err);
+        else res.sendStatus(200);
+    });
+});
+
+// DELETE de un post existente (identificado por su Id)
+router.delete('/:id', function(req, res, next) {
+    Prestamo.findByIdAndDelete(req.params.id, function(err, prestamoinfo) {
+        if (err) res.status(500).send(err);
+        else res.sendStatus(200);
+    });
 });
 
 module.exports = router;
