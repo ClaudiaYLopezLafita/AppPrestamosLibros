@@ -31,7 +31,7 @@ router.get('/all/:id', function(req, res, next) {
 
 // GET de todos los prestamos de un libro dado (identificado por su Id)
 router.get('/all/:id', function(req, res, next) {
-    Post.find({ 'libroID': req.params.id}).sort('-fechaRetirada')
+    Prestamo.find({ 'libroID': req.params.id}).sort('-fechaRetirada')
     .populate('libroID',{_id:0,titulo:1})
     .populate('usuarioID',{_id:0,fullname:1})
     .exec(function(err, posts){
@@ -40,31 +40,45 @@ router.get('/all/:id', function(req, res, next) {
     });
 });
 
+//GET prestamos dependiendo del estado pasando por url el parámetro
+//usando querystrings
+router.get('/', function(req, res, next){
+    let estado = req.query.estado;
+    Prestamo.find(estado).exec()
+        .then(prestamos => res.status(200).json(prestamos))
+        .catch(err => res.status(500).json({ message: err }))
+})
+
 // POST de un nuevo post o entrada
 router.post('/', function(req, res, next) {
     //comprobamos que el usuario existe
     User.findById(req.body.iduser, function(err, userinfo) {
         if (err) res.status(500).send(err);
         else {
-            // crear la instancia Post
-            var prestamoInstance = new Post({
-                usuarioID: req.body.usuarioID,
-                libroID: req.body.libroID,
-                fechaRetirada: req.body.fechaRetirada,
-                fechaDevolucion: req.body.fechaDevolucion,
-            });
-            // añadir postInstance al array de posts del usuario
-            // userinfo.posts.push(prestamoInstance);
-            // salvar el post en las colecciones users y posts
-            userinfo.save(function(err) {
-                if (err) res.status(500).send(err);
-                else {
-                    prestamoInstance.save(function(err) {
+            Libro.findById(req.body.idlibro), function(err, libroinfo){
+                if(err) res.status(500).setDefaultEncoding(err);
+                else{
+                    // crear la instancia Prestamos
+                    var prestamoInstance = new Post({
+                        usuarioID: req.body.usuarioID,
+                        libroID: req.body.libroID,
+                        fechaRetirada: req.body.fechaRetirada,
+                        fechaDevolucion: req.body.fechaDevolucion,
+                    });
+                    // añadir prestamoInstance al array de posts del usuario
+                    // userinfo.posts.push(prestamoInstance);
+                    // salvar el post en las colecciones users y prestamos y libros
+                    userinfo.save(function(err) {
                         if (err) res.status(500).send(err);
-                            res.sendStatus(200);
-                });
+                        else {
+                            prestamoInstance.save(function(err) {
+                                if (err) res.status(500).send(err);
+                                    res.sendStatus(200);
+                        });
+                        }
+                    });
                 }
-            });
+            }
         }
     });
 });
@@ -77,7 +91,7 @@ router.put('/:id', function(req, res, next) {
     });
 });
 
-// DELETE de un post existente (identificado por su Id)
+// DELETE de un prestamo existente (identificado por su Id)
 router.delete('/:id', function(req, res, next) {
     Prestamo.findByIdAndDelete(req.params.id, function(err, prestamoinfo) {
         if (err) res.status(500).send(err);
