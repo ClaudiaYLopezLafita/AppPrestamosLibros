@@ -11,4 +11,9 @@ router.get('/login', (req, res) => {
   res.render('login', { title: 'App Prestamos Libros' });
 })
 
+// Ruta para el register de usuario
+router.get('/register', (req, res) => {
+  res.render('register', {title: 'Register'});
+})
+
 module.exports = router;
