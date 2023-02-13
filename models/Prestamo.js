@@ -22,17 +22,16 @@ const PrestamoSchema = new mongoose.Schema({
     observaciones:{
         type: String,
     },
-    
     libroID:[{
             type:  mongoose.Schema.Types.ObjectId,
             ref: 'Libro',
             default: null
     }],
-    usuarioID:[{
+    usuarioID:{
         type:  mongoose.Schema.Types.ObjectId,
         ref: 'Usuario',
         default: null
-    }]
+    }
 })
 
 module.exports = mongoose.model('Prestamo', PrestamoSchema);
