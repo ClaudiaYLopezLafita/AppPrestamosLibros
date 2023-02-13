@@ -31,8 +31,9 @@ var UserSchema = new mongoose.Schema({
         type: String, 
         required: true },
     phone: { 
-        type: Number, 
-        min: 9, max: 9
+        type: String, 
+        minLength: 9,
+        maxLength: 9
     },
     creationdate: { 
         type: Date, 
