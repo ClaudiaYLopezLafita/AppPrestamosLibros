@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 var bcrypt = require('bcryptjs');
 var SALT_WORK_FACTOR = 10;
 
-var UserSchema = new Schema({
+var UserSchema = new mongoose.Schema({
     username: { 
         type: String, 
         required: true, 
@@ -31,8 +31,9 @@ var UserSchema = new Schema({
         type: String, 
         required: true },
     phone: { 
-        type: Number, 
-        min: 9, max: 9
+        type: String, 
+        minLength: 9,
+        maxLength: 9
     },
     creationdate: { 
         type: Date, 
