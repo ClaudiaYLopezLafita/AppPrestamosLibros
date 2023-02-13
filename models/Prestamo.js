@@ -17,7 +17,7 @@ const PrestamoSchema = new mongoose.Schema({
     estado:{
         type: String,
         enum: ['activo', 'devuelto'],
-        default: 'activo '
+        default: 'activo'
     },
     observaciones:{
         type: String,
