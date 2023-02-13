@@ -55,7 +55,7 @@ router.get('/all/:id', function(req, res, next) {
 // GET de todos los prestamos de un libro dado (identificado por su Id)
 router.get('/all/:id', function(req, res, next) {
     //¿como poner find si esta dentro de un array?
-    Prestamo.find({ 'libroID': req.params.id}).sort('-fechaRetirada')
+    Prestamo.find({ 'libroID': req.params.id}).sort('-fechaDevolucion')
     .populate(
         [{
             path: 'usuarioID',
