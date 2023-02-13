@@ -1,9 +1,7 @@
-const mongose = require('mongose')
-
+const mongoose = require('mongoose')
 var Usuario = require('./Usuario');
 
-
-const SancionSchema = mongose.Schema({
+const SancionSchema = mongoose.Schema({
     numReferencia:{
         type: String,
         required:true
@@ -28,7 +26,7 @@ const SancionSchema = mongose.Schema({
         required:false
     },
     usuarioID:[{
-        type: Schema.ObjectId,
+        type: mongoose.Schema.Types.ObjectId,
         ref: 'Usuario',
         default: null
     }]
