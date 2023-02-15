@@ -73,14 +73,13 @@ router.get('/alls/:idLibro', function(req, res, next) {
 });
 
 //GET prestamos dependiendo del estado pasando por url el parámetro
-//usando querystrings: prestamos?estado=status
-router.get('/', (req, res) => {
-    let status = req.query.estado;
-    console.log(status);
-    Prestamo.find({estado:status},function(err,prestamos){
-        console.log(prestamos);
+//usando querystrings: prestamos/find?estado=status
+router.get('/find', (req, res, next) => {
+    let status = req.query.estado
+    // realizamos una busqueda 
+    Prestamo.find({estado:status}, function(err,prestamos){
         if(err)res.status(500).send(err);
-        console.log(prestamos);
+
         if(prestamos != null){
             res.status(200).json(prestamos);
         } else {
