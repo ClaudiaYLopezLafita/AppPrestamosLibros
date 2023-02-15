@@ -14,7 +14,11 @@ nav, .main{
   border-bottom: solid 2px #5A5A5A;
 }
 
-body .main, .loginMain{
+#logo{
+  width: 21%;
+}
+
+body .main, .loginMain, .mainRegister{
   background-color: #e0dede;
 }
 
