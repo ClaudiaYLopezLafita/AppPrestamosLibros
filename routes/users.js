@@ -3,7 +3,15 @@ var router = express.Router();
 const User = require('../models/Usuario');
 
 router.get('/', (req, res) => {
-    User.find({}).exec()
+    const { name, surname1, surname2, location } = req.query;
+    const query = {};
+
+    if (name) query.name = name;
+    if (surname1) query.surname1 = surname1;
+    if (surname2) query.surname2 = surname2;
+    if (location) query.location = location;
+
+    User.find(query).select('-password').exec()
         .then(users => res.status(200).json(users))
         .catch(err => res.status(500).json({ message: err }));
 });
