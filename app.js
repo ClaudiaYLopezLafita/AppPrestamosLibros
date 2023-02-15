@@ -12,7 +12,7 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var librosRouter = require('./routes/libros');
 var prestamosRouter = require('./routes/prestamos');
-// var reservasRouter = require('./routes/users');
+var reservasRouter = require('./routes/reservas');
 var sancionesRouter = require('./routes/sanciones');
 
 var app = express();
@@ -34,7 +34,7 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/libros', librosRouter);
 app.use('/prestamos', prestamosRouter);
-// app.use('/reservas', reservasRouter);
+app.use('/reservas', reservasRouter);
 app.use('/sanciones', sancionesRouter);
 
 // catch 404 and forward to error handler
