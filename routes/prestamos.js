@@ -8,7 +8,7 @@ var Libro = require('../models/Libro.js');
 var Prestamo = require('../models/Prestamo.js');
 var User = require('../models/Usuario.js');
 
-// GET del listado de prestamos ordenados por fecha de publicación -- FUNCIONA
+// GET del listado de prestamos ordenados por fecha de creación 
 router.get('/', (req, res, next) => {
     Prestamo.find()
     .sort('-fechaRetirada')
@@ -16,11 +16,11 @@ router.get('/', (req, res, next) => {
         [{
             path: 'usuarioID',
             model: 'User',
-            select: '-_id username' //Fields you want to return in this populate
+            select: '-_id username' // atributos que queremos ver
         }, {
             path: 'libroID',
             model: 'Libro',
-            select: '-_id titulo' //Fields you want to return in this populate
+            select: '-_id titulo'
         }]
     )
     .exec(function(err, prestamos) {
@@ -51,9 +51,8 @@ router.get('/all/:idUser', function(req, res, next) {
 
 // GET de todos los prestamos de un libro dado (identificado por su Id) --- FUNCIONA
 router.get('/alls/:idLibro', function(req, res, next) {
-    //¿como poner find si esta dentro de un array?
-    console.log(req.params.idLibro)
-    Prestamo.find({ 'libroID': req.params.idLibro}).sort('-fechaDevolucion')
+    Prestamo.find({ 'libroID': req.params.idLibro})
+    .sort('-fechaDevolucion')
     .populate(
         [{
             path: 'usuarioID',

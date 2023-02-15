@@ -14,8 +14,12 @@ nav, .main{
   border-bottom: solid 2px #5A5A5A;
 }
 
-body .main{
+body .main, .loginMain{
   background-color: #e0dede;
+}
+
+.containerForm{
+  box-shadow: 4px 4px 4px 4px;
 }
 
 .carousel{

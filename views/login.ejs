@@ -8,13 +8,51 @@
     <link rel='stylesheet' href='/stylesheets/style.css' />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <!-- Icon Bootstrap-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
 </head>
 
 <body>
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-4">
-                <h1 class="mb-3">Login</h1>
+    <div class="container-fluid px-0">
+        <!--NAVBAR-->
+        <nav class="navbar navbar-expand-sm navbar-dark bg-dark mx-0">
+            <div class="container-fluid">
+                <div class="col-md-3">
+                <a class="navbar-brand" href="javascript:void(0)">Logo</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                </div>
+                <div class="col-sm-1 collapse navbar-collapse" id="mynavbar">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                    <a class="nav-link text-white" href="javascript:void(0)">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                    <a class="nav-link text-white" href="javascript:void(0)">Categorías</a>
+                    </li>
+                    <li class="nav-item">
+                    <a class="nav-link text-white" href="javascript:void(0)">Sobre Nosotros</a>
+                    </li>
+                    <li class="nav-item">
+                    <a class="nav-link text-white" href="/register">Registro</a>
+                    </li>
+                </ul>
+                </div>
+                <div class="col-sm">
+                <form class="d-flex text-dark">
+                    <button class="btn btn-login btn-outline-light rounded-pill me-2 text-white" type="button"><a href="/login" class="link-light">Login</a></button>
+                    <input class="form-control me-2 rounded-pill" type="text" placeholder="Search">
+                    <button class="btn btn-outline-light rounded-pill" type="button">Search</button>
+                </form>
+                </div>
+            </div>
+        </nav>
+        <!--END NAVBAR-->
+        <!--START MAIN -->
+        <div class="row justify-content-center py-lg-5 loginMain">
+            <div class="col-md-4 py-4 containerForm">
+                <h1 class="mb-3 text-center">Login</h1>
                 <form action="/users/signin" method="post">
                     <div class="mb-3">
                         <label for="username" class="form-label">Usuario:</label>
@@ -32,6 +70,164 @@
                 </form>
             </div>
         </div>
+        <!--END MAIN -->
+        <!--START FOOTER-->
+        <footer class="bg-dark text-center text-white">
+            <!-- Grid container -->
+            <div class="container p-4">
+                <!-- Section: Social media -->
+                <section class="mb-4">
+                <!-- Facebook -->
+                <a class="btn btn-outline-light btn-floating rounded-pill m-1" href="#!" role="button"
+                    ><i class="bi bi-facebook"></i
+                ></a>
+                <!-- Twitter -->
+                <a class="btn btn-outline-light btn-floating rounded-pill m-1" href="#!" role="button"
+                    ><i class="bi bi-twitter"></i
+                ></a>
+                <!-- Google -->
+                <a class="btn btn-outline-light btn-floating rounded-pill m-1" href="#!" role="button"
+                    ><i class="bi bi-google"></i
+                ></a>
+                <!-- Instagram -->
+                <a class="btn btn-outline-light btn-floating rounded-pill m-1" href="#!" role="button"
+                    ><i class="bi bi-instagram"></i
+                ></a>
+                <!-- Linkedin -->
+                <a class="btn btn-outline-light btn-floating rounded-pill m-1" href="#!" role="button"
+                    ><i class="bi bi-linkedin"></i
+                ></a>
+                </section>
+                <!-- Section: Social media -->
+                <!-- Section: Form -->
+                <section class="">
+                <form action="">
+                    <!--Grid row-->
+                    <div class="row d-flex justify-content-center">
+                    <!--Grid column-->
+                    <div class="col-auto">
+                        <p class="pt-2">
+                        <strong>SUBSCRIBE</strong>
+                        </p>
+                    </div>
+                    <!--Grid column-->
+                    <!--Grid column-->
+                    <div class="col-md-5 col-12">
+                        <!-- Email input -->
+                        <div class="form-outline form-white mb-4">
+                        <input type="email" id="form5Example21" class="form-control rounded-pill" placeholder="Email adress" />
+                        </div>
+                    </div>
+                    <!--Grid column-->
+                    <!--Grid column-->
+                    <div class="col-auto">
+                        <!-- Submit button -->
+                        <button type="submit" class="btn btn-outline-light rounded-pill mb-4">
+                        Subscribe
+                        </button>
+                    </div>
+                    <!--Grid column-->
+                    </div>
+                    <!--Grid row-->
+                </form>
+                </section>
+                <!-- Section: Form -->
+                <hr class="text-white px-0">
+                <!-- Section: Links -->
+                <section class="pb-0">
+                <!--Grid row-->
+                <div class="row">
+                    <!--Grid column-->
+                    <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                    <h5 class="text-uppercase">Categorias</h5>
+                    <ul class="list-unstyled mb-0">
+                        <li>
+                        <a href="#!" class="text-white fw-light">Fantasia</a>
+                        </li>
+                        <li>
+                        <a href="#!" class="text-white fw-light">Novela Histórica</a>
+                        </li>
+                        <li>
+                        <a href="#!" class="text-white fw-light">Drama</a>
+                        </li>
+                        <li>
+                        <a href="#!" class="text-white fw-light">...</a>
+                        </li>
+                    </ul>
+                    </div>
+                    <!--Grid column-->
+                    <!--Grid column-->
+                    <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                    <h5 class="text-uppercase">Secciones</h5>
+                    <ul class="list-unstyled mb-0">
+                        <li>
+                        <a href="#!" class="text-white fw-light">Inicio</a>
+                        </li>
+                        <li>
+                        <a href="#!" class="text-white fw-light">Categorias</a>
+                        </li>
+                        <li>
+                        <a href="#!" class="text-white fw-light">Registro</a>
+                        </li>
+                        <li>
+                        <a href="#!" class="text-white fw-light">Sobre Nosotros</a>
+                        </li>
+                    </ul>
+                    </div>
+                    <!--Grid column-->
+                    <!--Grid column-->
+                    <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                    <h5 class="text-uppercase">Utils</h5>
+                    <ul class="list-unstyled mb-0">
+                        <li>
+                        <a href="#!" class="text-white fw-light">Preguntas frecuentes</a>
+                        </li>
+                        <li>
+                        <a href="#!" class="text-white fw-light">Terminos de política</a>
+                        </li>
+                        <li>
+                        <a href="#!" class="text-white fw-light">Gestión de datos</a>
+                        </li>
+                        <li>
+                        <a href="#!" class="text-white fw-light">Servicio técnico</a>
+                        </li>
+                    </ul>
+                    </div>
+                    <!--Grid column-->
+                    <!--Grid column-->
+                    <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                    <h5 class="text-uppercase">Contáctanos</h5>
+                    <ul class="list-unstyled mb-0">
+                        <li class="pb-1">
+                        <i class="bi bi-house-door-fill pr-1"></i>
+                        <a href="#!" class="text-white fw-light">C/ localizacion, 4, 5D</a>
+                        </li>
+                        <li class="pb-1">
+                        <i class="bi bi-envelope-at-fill pr-1"></i>
+                        <a href="#!" class="text-white fw-light">example@email.com</a>
+                        </li>
+                        <li>
+                        <i class="bi bi-telephone-fill pr-1"></i>
+                        <a href="#!" class="text-white fw-light">+34 999-999-999</a>
+                        </li>
+                    </ul>
+                    </div>
+                    <!--Grid column-->
+                </div>
+                <!--Grid row-->
+                </section>
+                <!-- Section: Links -->
+            </div>
+            <!-- Grid container -->
+            <hr class="text-white px-0">
+            <!-- Copyright -->
+            <div class="text-center p-3 pt-0">
+                © 2020 Copyright:
+                <a class="text-white" href="http://www.iesalixar.org/">I.E.S Alixar</a>
+            </div>
+            <!-- Copyright -->
+            </footer>
+            <!--END FOOTER-->
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
