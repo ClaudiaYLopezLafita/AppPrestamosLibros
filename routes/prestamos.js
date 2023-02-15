@@ -36,11 +36,11 @@ router.get('/all/:idUser', function(req, res, next) {
         [{
             path: 'usuarioID',
             model: 'User',
-            select: '-_id username' //Fields you want to return in this populate
+            select: '-_id username' 
         },{
             path: 'libroID',
             model: 'Libro',
-            select: '-_id titulo' //Fields you want to return in this populate
+            select: '-_id titulo'
         }]
     )
     .exec(function(err, prestamos){
@@ -73,13 +73,15 @@ router.get('/alls/:idLibro', function(req, res, next) {
 });
 
 //GET prestamos dependiendo del estado pasando por url el parámetro
-//usando querystrings
-router.get('/', function(req, res, next){
-    let estado = req.query.estado;
-    console.log(estado);
-    Prestamo.findOne({estado:estado},function(err,prestamos){
-        if(err) res.status(500).send(err);
-        if(prestamos!=null){
+//usando querystrings: prestamos?estado=status
+router.get('/', (req, res) => {
+    let status = req.query.estado;
+    console.log(status);
+    Prestamo.find({estado:status},function(err,prestamos){
+        console.log(prestamos);
+        if(err)res.status(500).send(err);
+        console.log(prestamos);
+        if(prestamos != null){
             res.status(200).json(prestamos);
         } else {
             res.status(404).send(err)
