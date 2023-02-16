@@ -14,8 +14,16 @@ nav, .main{
   border-bottom: solid 2px #5A5A5A;
 }
 
-body .main{
+#logo{
+  width: 21%;
+}
+
+body .main, .loginMain, .mainRegister{
   background-color: #e0dede;
+}
+
+.containerForm{
+  box-shadow: 4px 4px 4px 4px;
 }
 
 .carousel{
