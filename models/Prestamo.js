@@ -17,22 +17,21 @@ const PrestamoSchema = new mongoose.Schema({
     estado:{
         type: String,
         enum: ['activo', 'devuelto'],
-        default: 'activo '
+        default: 'activo'
     },
     observaciones:{
         type: String,
     },
-    
     libroID:[{
             type:  mongoose.Schema.Types.ObjectId,
             ref: 'Libro',
             default: null
     }],
-    usuarioID:[{
+    usuarioID:{
         type:  mongoose.Schema.Types.ObjectId,
         ref: 'Usuario',
         default: null
-    }]
+    }
 })
 
 module.exports = mongoose.model('Prestamo', PrestamoSchema);
