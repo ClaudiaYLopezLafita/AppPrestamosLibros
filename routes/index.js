@@ -16,7 +16,7 @@ router.get('/register', (req, res) => {
   res.render('register', {title: 'Register'});
 })
 
-// Ruta para el register de usuario
+// Ruta para el register de LIbro
 router.get('/registerLibro', (req, res) => {
   res.render('registerLibro', {title: 'Register Libro'});
 })
