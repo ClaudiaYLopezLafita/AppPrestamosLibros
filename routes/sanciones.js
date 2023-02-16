@@ -50,13 +50,12 @@ router.get('/', function(req, res, next){
 })
 
 router.post('/', function(req, res, next) {
-    //comprobamos que el usuario existe
     User.findById(req.body.usuarioID, function(err, userinfo) {
         if (err) res.status(500).send(err);
         else {
             Libro.findById(req.body.libroID, function(err, libroinfo){
                 if(err) res.status(500).setDefaultEncoding(err);
-                else{})
+                else{}})
                     Sancion.create(req.body, function(err, Sancioninfo) {
                         if (err) res.status(500).send(err);
                         else res.sendStatus(200);
@@ -65,9 +64,7 @@ router.post('/', function(req, res, next) {
                 }
             })
         }
-    });
-});
-
+    )
 router.put('/:id', function(req, res, next) {
     Sancion.findByIdAndUpdate(req.params.id,req.body, function(err,  Sancioninfo) {
         if (err) res.status(500).send(err);
