@@ -96,15 +96,6 @@ router.post('/', function(req, res, next) {
             Libro.findById(req.body.libroID, function(err, libroinfo){
                 if(err) res.status(500).setDefaultEncoding(err);
                 else{
-                    // let prestamo = new Prestamo({
-                    //     fechaRetirada: req.body.fechaRetirada,
-                    //     fechaDevolucion: req.body.fechaDevolucion,
-                    //     estado: req.body.estado,
-                    //     observaciones: req.body.observaciones,
-                    //     libroID: req.body.libroID,
-                    //     usuarioID: req.body.usuarioID
-                    // })
-                    // salvar el post en las colecciones users y prestamos y libros
                     Prestamo.create(req.body, function(err, prestamoinfo) {
                         if (err) res.status(500).send(err);
                         else res.sendStatus(200);
@@ -126,7 +117,7 @@ router.put('/:id', function(req, res, next) {
 
 // DELETE de un prestamo existente (identificado por su Id) -- FUNCIONA
 router.delete('/:id', function(req, res, next) {
-    Prestamo.findByIdAndDelete(req.params.id, function(err, prestamoinfo) {
+    Prestamo.findByIdAndDelete(req.params.id, function(err) {
         if (err) res.status(500).send(err);
         else res.sendStatus(200);
     });
