@@ -12,7 +12,7 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var librosRouter = require('./routes/libros');
 var prestamosRouter = require('./routes/prestamos');
-var reservasRouter = require('./routes/users');
+var reservasRouter = require('./routes/reservas');
 var sancionesRouter = require('./routes/sanciones');
 
 var app = express();
