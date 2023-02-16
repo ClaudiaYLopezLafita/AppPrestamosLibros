@@ -3,13 +3,9 @@ var Usuario = require('./Usuario');
 var Libro = require('./Libro');
 
 const ReservasSchema = new mongoose.Schema({
-    idReserva: {
-        type: String,
-        required: true,
-        unique: true
-    },
     realización: {
         type: Date,
+        default: Date.now,
         required: true
     },
     disponibilidad: {
