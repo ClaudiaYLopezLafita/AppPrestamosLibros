@@ -56,16 +56,7 @@ router.post('/', function(req, res, next) {
         else {
             Libro.findById(req.body.libroID, function(err, libroinfo){
                 if(err) res.status(500).setDefaultEncoding(err);
-                else{
-                    // let Sancion = new Sancion({
-                    //     f_inicio: req.body.f_inicio,
-                    //     f_fin: req.body.f_fin,
-                    //     estado: req.body.estado,
-                    //     observaciones: req.body.observaciones,
-                    //     libroID: req.body.libroID,
-                    //     usuarioID: req.body.usuarioID
-                    // })
-                    // salvar el post en las colecciones users y sanciones y libros
+                else{})
                     Sancion.create(req.body, function(err, Sancioninfo) {
                         if (err) res.status(500).send(err);
                         else res.sendStatus(200);
