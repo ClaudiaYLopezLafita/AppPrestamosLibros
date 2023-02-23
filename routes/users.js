@@ -53,9 +53,9 @@ router.post('/signin', (req, res, next) => {
             user.comparePassword(password, function (err, isMatch) {
                 if (err) return next(err);
                 if (isMatch) {
-                    res.status(200).json({ message: 'ok', id: user._id });
+                    res.status(200).json({ message: `Bienvenido ${user.username}`});
                 } else {
-                    res.status(200).json({ message: 'la contraseña no coincide' });
+                    res.status(200).json({ message: 'La contraseña no coincide' });
                 }
             })
         })

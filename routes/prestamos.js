@@ -2,6 +2,8 @@ var express = require('express');
 var mongoose = require('mongoose');
 mongoose.connection;
 var router = express.Router();
+// 
+const { body, validationResult } = require('express-validator');
 
 //modelos
 var Libro = require('../models/Libro.js');
@@ -75,8 +77,19 @@ router.get('/alls/:idLibro', function(req, res, next) {
 //usando querystrings: prestamos/find?estado=status
 router.get('/find', (req, res, next) => {
     let status = req.query.estado
+
     // realizamos una busqueda 
-    Prestamo.find({estado:status}, function(err,prestamos){
+    Prestamo.find({estado:status}).populate(
+        [{
+            path: 'usuarioID',
+            model: 'User',
+            select: '-_id name surname1 email' //Fields you want to return in this populate
+        }, {
+            path: 'libroID',
+            model: 'Libro',
+            select: '-_id titulo' //Fields you want to return in this populate
+        }]
+    ).exec(function(err,prestamos){
         if(err)res.status(500).send(err);
 
         if(prestamos != null){
@@ -85,6 +98,7 @@ router.get('/find', (req, res, next) => {
             res.status(404).send(err)
         }
     })
+
 })
 
 // POST de un nuevo prestamo -- FUNCIONA
