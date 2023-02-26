@@ -101,11 +101,33 @@ router.get('/find', (req, res, next) => {
 
 })
 
-// POST de un nuevo prestamo -- FUNCIONA
+var MAX_LIBROS = 3;
+
+// POST de un nuevo prestamo 
 router.post('/', 
-    body('fechaDevolucion', 'Fecha Devolución obligatoria').exists(),
-    // body('libroID', 'Máxmimo de tres libros').isArray(),
-    body('observaciones', 'Rango de caracteres incorrecto [10-50]').isLength({min:10, max:50}),
+    //el campo fechaDevolucion debe de ser requerido, de tipo fecha y mayor que la fechaRetirada 
+    body('fechaDevolucion').exists().isISO8601()
+    .custom((value, {req}) =>{
+        //creamos un validacion personalizada para la comparación de las fechas
+        if(req.body.fechaRetirada >= value){
+            throw new Error('La fecha de retirada debe de ser anterior a la devolución');
+        }
+        return true
+    }),
+    //el campo libroID deber de ser requerido, un array de máxmimo tres libros y minimo un
+    body('libroID').isArray()
+    .custom((value) =>{
+        // validacion personalizada comporbacion de un minimo de 1 libro y máximo de 3 libros
+        if(value.length < 1 || value.length > MAX_LIBROS){
+            
+            throw new Error('Requerido con un máximo de tres libros');
+        }
+        return true
+    }),
+    //el campo usuarioID debe de ser requerido y de tipo objeto id de mongo
+    body('usuarioID').isMongoId().exists().withMessage('Debe ser el ObjectId del usuario y obligatorio'),
+    //el campo observaciones debe tener un rango de caracteres entre 10 y 100
+    body('observaciones').isLength({min:10, max:100}).withMessage('Rango de caracteres inválido'),
     function(req, res, next) {
         const errors = validationResult(req);
         if (!errors.isEmpty()) {
