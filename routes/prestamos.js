@@ -102,23 +102,31 @@ router.get('/find', (req, res, next) => {
 })
 
 // POST de un nuevo prestamo -- FUNCIONA
-router.post('/', function(req, res, next) {
-    //comprobamos que el usuario existe
-    User.findById(req.body.usuarioID, function(err, userinfo) {
-        if (err) res.status(500).send(err);
-        else {
-            Libro.findById(req.body.libroID, function(err, libroinfo){
-                if(err) res.status(500).setDefaultEncoding(err);
-                else{
-                    Prestamo.create(req.body, function(err, prestamoinfo) {
-                        if (err) res.status(500).send(err);
-                        else res.sendStatus(200);
-                    });
-                    
-                }
-            })
+router.post('/', 
+    body('fechaDevolucion', 'Fecha Devolución obligatoria').exists(),
+    // body('libroID', 'Máxmimo de tres libros').isArray(),
+    body('observaciones', 'Rango de caracteres incorrecto [10-50]').isLength({min:10, max:50}),
+    function(req, res, next) {
+        const errors = validationResult(req);
+        if (!errors.isEmpty()) {
+        return res.status(400).json({ errors: errors.array() });
         }
-    });
+        //comprobamos que el usuario existe
+        User.findById(req.body.usuarioID, function(err, userinfo) {
+            if (err) res.status(500).send(err);
+            else {
+                Libro.findById(req.body.libroID, function(err, libroinfo){
+                    if(err) res.status(500).setDefaultEncoding(err);
+                    else{
+                        Prestamo.create(req.body, function(err, prestamoinfo) {
+                            if (err) res.status(500).send(err);
+                            else res.sendStatus(200);
+                        });
+                        
+                    }
+                })
+            }
+        });
 });
 
 // PUT: actualización de un prestamo existente (identificado por su Id) -- FUNCIONA
