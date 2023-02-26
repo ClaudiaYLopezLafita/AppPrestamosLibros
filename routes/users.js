@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 const User = require('../models/Usuario');
+const { body, validationResult } = require('express-validator');
 
 router.get('/', (req, res) => {
     User.find({}).exec()
@@ -9,21 +10,43 @@ router.get('/', (req, res) => {
 });
 
 router.get('/:id', (req, res) => {
-    const userId = req.params.id;
-    User.findById(userId).exec()
-        .then(user => {
-            if (!user) return res.status(404).json({ message: 'Usuario no encontrado' });
-            res.status(200).json(user);
-        })
-        .catch(err => res.status(500).json({ message: err }))
-});
+        const userId = req.params.id;
+        User.findById(userId).exec()
+            .then(user => {
+                if (!user) return res.status(404).json({ message: 'Usuario no encontrado' });
+                res.status(200).json(user);
+            })
+            .catch(err => res.status(500).json({ message: err }))
+    }
+);
 
-router.post('/', (req, res) => {
-    const user = req.body;
-    User.create(user)
-        .then(() => res.status(201).json({ message: `Usuario ${user.username} añadido satisfactoriamente` }))
-        .catch(err => res.status(500).json({ message: err }))
-});
+router.post('/',
+    //nombre de usuario con expresion regular,  ejemplo válido: ACA@1234
+    body('username', 'Nombre de usuario incorrecto').isString()
+    .custom((value, {req}) =>{
+        let rex = /^([A-Z]{3}.[0-9]{4})$/
+        if(rex.test(value) === false){
+            throw new Error('Nombre de usuario incorrecto');
+        }
+        return true
+    }),
+    // email debe de ser de tipo email
+    body('email','La contraseña no es válida').isEmail().withMessage('Tipo Email'),
+    //la password debe seguir unos criterios. 
+    body('password').isString().isLength({ min: 8 })
+    .not().isLowercase().not().isUppercase()
+    .not().isNumeric().not().isAlpha(),
+    (req, res) => {
+        const errors = validationResult(req);
+        if (!errors.isEmpty()) {
+        return res.status(400).json({ errors: errors.array() });
+        }
+        const user = req.body;
+        User.create(user)
+            .then(() => res.status(201).json({ message: `Usuario ${user.username} añadido satisfactoriamente` }))
+            .catch(err => res.status(500).json({ message: err }))
+    }
+);
 
 router.put('/:id', (req, res) => {
     const userId = req.params.id;
@@ -53,9 +76,9 @@ router.post('/signin', (req, res, next) => {
             user.comparePassword(password, function (err, isMatch) {
                 if (err) return next(err);
                 if (isMatch) {
-                    res.status(200).json({ message: 'ok', id: user._id });
+                    res.status(200).json({ message: `Bienvenido ${user.username}`});
                 } else {
-                    res.status(200).json({ message: 'la contraseña no coincide' });
+                    res.status(200).json({ message: 'La contraseña no coincide' });
                 }
             })
         })
