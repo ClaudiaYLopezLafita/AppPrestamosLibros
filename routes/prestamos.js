@@ -119,7 +119,6 @@ router.post('/',
     .custom((value) =>{
         // validacion personalizada comporbacion de un minimo de 1 libro y máximo de 3 libros
         if(value.length < 1 || value.length > MAX_LIBROS){
-            
             throw new Error('Requerido con un máximo de tres libros');
         }
         return true
