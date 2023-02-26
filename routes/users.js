@@ -21,6 +21,7 @@ router.get('/:id', (req, res) => {
 );
 
 router.post('/',
+    //nombre de usuario con expresion regular,  ejemplo válido: ACA@1234
     body('username', 'Nombre de usuario incorrecto').isString()
     .custom((value, {req}) =>{
         let rex = /^([A-Z]{3}.[0-9]{4})$/
@@ -30,12 +31,11 @@ router.post('/',
         return true
     }),
     // email debe de ser de tipo email
-    body('email').isEmail().withMessage('Tipo Email'),
+    body('email','La contraseña no es válida').isEmail().withMessage('Tipo Email'),
     //la password debe seguir unos criterios. 
     body('password').isString().isLength({ min: 8 })
     .not().isLowercase().not().isUppercase()
-    .not().isNumeric().not().isAlpha()
-    .withMessage('La contraseña no es válida'),
+    .not().isNumeric().not().isAlpha(),
     (req, res) => {
         const errors = validationResult(req);
         if (!errors.isEmpty()) {
