@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Libro = require('../models/Libro');
+const { body, validationResult } = require('express-validator');
 
 router.get('/', (req, res) => {
     // Búsqueda por ISBN, titulo y autor
@@ -26,17 +27,22 @@ router.get('/:id', (req, res) => {
         .catch(err => res.status(500).json({ message: err }))
 });
 
-router.post('/', (req, res) => {
-    Libro.create(req.body)
-        .then(libro => {
-            console.log(res);
-            res.status(201).json({ message: `Libro ${libro.titulo} añadido satisfactoriamente` })
-        })
-        .catch(err => {
-            if (err.code == 11000) return res.status(401).json({ message: 'El ISBN introducido ya existe' });
-            res.status(500).json({ message: err });
-        })
-});
+router.post('/',
+    body('isbn').isISBN(),
+    body('titulo').isEmpty(),
+    body('autor').isEmpty(),
+    body('anioPublicacion').isDate(),
+    (req, res) => {
+        Libro.create(req.body)
+            .then(libro => {
+                console.log(res);
+                res.status(201).json({ message: `Libro ${libro.titulo} añadido satisfactoriamente` })
+            })
+            .catch(err => {
+                if (err.code == 11000) return res.status(401).json({ message: 'El ISBN introducido ya existe' });
+                res.status(500).json({ message: err });
+            })
+    });
 
 router.put('/:id', (req, res) => {
     const libroNew = req.body;
