@@ -29,10 +29,13 @@ router.get('/:id', (req, res) => {
 
 router.post('/',
     body('isbn').isISBN(),
-    body('titulo').isEmpty(),
-    body('autor').isEmpty(),
-    body('anioPublicacion').isDate(),
+    body('titulo').notEmpty(),
+    body('autor').notEmpty(),
+    body('anioPublicacion').optional().isDate(),
     (req, res) => {
+        const errors = validationResult(req);
+        if (!errors.isEmpty()) return res.status(400).json({ errors: errors.array() });
+
         Libro.create(req.body)
             .then(libro => {
                 console.log(res);
