@@ -15,15 +15,18 @@ const ReservasSchema = new mongoose.Schema({
     observaciones: {
         type: String
     },
+    nombre: {
+        type: String
+    },
     idLibro: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Libro',
-        default: null
+        required: true
     },
     idUsuario: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Usuario',
-        default: null
+        required: true
     }
 })
 
