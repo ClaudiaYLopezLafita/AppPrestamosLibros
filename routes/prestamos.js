@@ -141,7 +141,7 @@ router.post('/',
                     else{
                         Prestamo.create(req.body, function(err, prestamoinfo) {
                             if (err) res.status(500).send(err);
-                            else res.sendStatus(200);
+                            else res.sendStatus(200).json({ message: `Prestamos ${prestamoinfo} añadido satisfactoriamente` });
                         });
                         
                     }
