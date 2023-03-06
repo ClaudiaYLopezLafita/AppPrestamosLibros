@@ -117,6 +117,8 @@ router.post('/',
     //el campo libroID deber de ser requerido, un array de máxmimo tres libros y minimo un
     body('libroID').isArray()
     .custom((value) =>{
+        value = value.split(',');
+        console.log(value.length);
         // validacion personalizada comporbacion de un minimo de 1 libro y máximo de 3 libros
         if(value.length < 1 || value.length > MAX_LIBROS){
             throw new Error('Requerido con un máximo de tres libros');
